@@ -7,14 +7,19 @@ import org.jline.reader.Parser;
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
 
-import java.io.IOException;
-
 /**
  * @author Alexey Merezhin
  */
 public class Cli {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
+        if (args.length != 1) {
+            System.out.println("Usage: mvn-cli /my/proj/pom.xml");
+            System.exit(1);
+        }
+
+        MavenProject project = new MavenProject(args[0]);
+
         TerminalBuilder builder = TerminalBuilder.builder();
         Terminal terminal = builder.build();
         Completer completer = null;
@@ -34,5 +39,9 @@ public class Cli {
             terminal.writer().println(line);
             terminal.flush();
         }
+    }
+
+    private static void loadMavenProject(String arg) {
+
     }
 }
