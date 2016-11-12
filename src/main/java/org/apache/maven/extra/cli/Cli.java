@@ -31,17 +31,19 @@ public class Cli {
                 .build();
 
         while (true) {
+            write(terminal, "loading...");
+
             String prompt = "> ";
             String rightPrompt = "";
 
             String line = reader.readLine(prompt, rightPrompt, null, null);
 
-            terminal.writer().println(line);
-            terminal.flush();
+            write(terminal, line);
         }
     }
 
-    private static void loadMavenProject(String arg) {
-
+    private static void write(Terminal terminal, String msg) {
+        terminal.writer().println(msg);
+        terminal.writer().flush();
     }
 }
