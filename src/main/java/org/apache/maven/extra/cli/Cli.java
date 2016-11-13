@@ -46,20 +46,8 @@ public class Cli {
 
     private void processCommand(String command) throws DependencyTreeBuilderException {
         if (command.startsWith("deps")) {
-            showDeps();
+            cliMojo.showDeps();
             return;
-        }
-    }
-
-    private void showDeps() throws DependencyTreeBuilderException {
-        DependencyNode node = cliMojo.dependencyTreeBuilder.buildDependencyTree(cliMojo.project, cliMojo.localRepository, null);
-        printNode(node, "");
-    }
-
-    private void printNode(DependencyNode node, String prefix) {
-        System.out.println(prefix + node.getArtifact().toString());
-        for (DependencyNode it : node.getChildren()) {
-            printNode(it, prefix + " ");
         }
     }
 
