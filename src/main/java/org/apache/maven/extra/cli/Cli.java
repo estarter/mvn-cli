@@ -1,7 +1,5 @@
 package org.apache.maven.extra.cli;
 
-import org.apache.maven.shared.dependency.tree.DependencyNode;
-import org.apache.maven.shared.dependency.tree.DependencyTreeBuilderException;
 import org.jline.reader.Completer;
 import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
@@ -44,7 +42,7 @@ public class Cli {
         }
     }
 
-    private void processCommand(String command) throws DependencyTreeBuilderException {
+    private void processCommand(String command) throws Exception {
         if (command.startsWith("deps")) {
             cliMojo.showDeps();
             return;
