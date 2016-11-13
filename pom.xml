@@ -31,6 +31,11 @@
             <artifactId>maven-plugin-annotations</artifactId>
             <version>3.5</version>
         </dependency>
+        <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>versions-maven-plugin</artifactId>
+            <version>2.3</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -79,6 +84,7 @@
                         <configuration>
                             <mojoDependencies>
                                 <mojoDependency>org.apache.maven.plugins:maven-dependency-plugin</mojoDependency>
+                                <mojoDependency>org.codehaus.mojo:versions-maven-plugin</mojoDependency>
                             </mojoDependencies>
                         </configuration>
                     </execution>

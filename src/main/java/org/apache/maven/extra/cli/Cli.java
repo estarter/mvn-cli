@@ -1,7 +1,5 @@
 package org.apache.maven.extra.cli;
 
-import org.apache.maven.shared.dependency.tree.DependencyNode;
-import org.apache.maven.shared.dependency.tree.DependencyTreeBuilderException;
 import org.jline.reader.Completer;
 import org.jline.reader.LineReader;
 import org.jline.reader.LineReaderBuilder;
@@ -44,22 +42,10 @@ public class Cli {
         }
     }
 
-    private void processCommand(String command) throws DependencyTreeBuilderException {
+    private void processCommand(String command) throws Exception {
         if (command.startsWith("deps")) {
-            showDeps();
+            cliMojo.showDeps();
             return;
-        }
-    }
-
-    private void showDeps() throws DependencyTreeBuilderException {
-        DependencyNode node = cliMojo.dependencyTreeBuilder.buildDependencyTree(cliMojo.project, cliMojo.localRepository, null);
-        printNode(node, "");
-    }
-
-    private void printNode(DependencyNode node, String prefix) {
-        System.out.println(prefix + node.getArtifact().toString());
-        for (DependencyNode it : node.getChildren()) {
-            printNode(it, prefix + " ");
         }
     }
 
